@@ -8,7 +8,7 @@ export const useUserStore = defineStore(
 
     function setConnected(log) {
       api
-        .post('signin', {
+        .post('members/signin', {
           body: log,
         })
         .then((response) => {
