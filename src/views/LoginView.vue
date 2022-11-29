@@ -1,4 +1,3 @@
-<--- 
 <script setup>
 import { useUserStore } from '@/stores/user'
 const user = useUserStore()
