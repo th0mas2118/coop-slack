@@ -12,10 +12,8 @@ let log = reactive({
     <div class='login-view'>
         <h1>Login</h1>
         <form type="login" onsubmit="return false">
-            <label>Mail</label>
             <input type="email" placeholder="Email" v-model="log.email">
-            <label>Password</label>
-            <input type="password" placeholder="password" v-model="log.password">
+            <input type="password" placeholder="Password" v-model="log.password">
             <button @click="user.setConnected(log)">Login</button>
         </form>
     </div>
