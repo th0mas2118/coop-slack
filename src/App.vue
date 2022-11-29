@@ -1,15 +1,11 @@
 <script setup>
+	import NavbarVue from "./components/Navbar.vue";
 </script>
 
 <template>
-  <nav>
-    <RouterLink to="/">Home</RouterLink>
-    <RouterLink to="/about">About</RouterLink>
-  </nav>
- 
+	<NavbarVue></NavbarVue>
 
-  <RouterView />
+	<RouterView />
 </template>
 
-<style scoped>
-</style>
+<style scoped></style>
