@@ -1,1 +1,29 @@
-@import './base.css';
+@import "./base.css";
+
+form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+input {
+	padding: 0.5em 0.75rem;
+	border-radius: 5px;
+	background-color: #181818;
+	color: white;
+	box-shadow: 0 0 5px 1px #18181850;
+}
+
+button {
+	padding: 0.75rem;
+	background-color: #06acfb;
+	color: white;
+	cursor: pointer;
+	transition: 0.3s all;
+}
+
+button:hover {
+	background-color: #06befb;
+}
