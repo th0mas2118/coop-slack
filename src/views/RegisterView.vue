@@ -1,3 +1,5 @@
+<!-- FAIT PAR ANTHONY DRAGUN -->
+
 <script setup>
 	import router from "@/router";
 
