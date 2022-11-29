@@ -31,6 +31,7 @@ button:hover {
 .login-view h1,
 .register-view h1 {
 	text-align: center;
+	margin: 1rem;
 }
 
 main {
