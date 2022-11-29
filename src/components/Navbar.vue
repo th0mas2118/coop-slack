@@ -11,8 +11,8 @@
 		<nav>
 			<RouterLink to="/">Home</RouterLink>
 			<RouterLink to="/about">About</RouterLink>
-			<RouterLink v-if="!user.isConnected" to="/">Login</RouterLink>
-			<RouterLink v-if="!user.isConnected" to="/about">Register</RouterLink>
+			<RouterLink v-if="!user.isConnected" to="/login">Login</RouterLink>
+			<RouterLink v-if="!user.isConnected" to="/register">Register</RouterLink>
 			<span v-if="user.isConnected" @click="user.disconnect">Logout</span>
 		</nav>
 	</header>
