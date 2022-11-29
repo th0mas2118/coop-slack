@@ -18,6 +18,5 @@ let log = reactive({
             <input type="password" placeholder="password" v-model="log.password">
             <button @click="user.setConnected(log)">Login</button>
         </form>
-        <a href="/register">Register</a>
     </div>
 </template>
