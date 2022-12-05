@@ -3,7 +3,7 @@
 	<div id="member">
 		<div class="member-data">
 			<div class="profile-picture">
-				<img src="https://gravatar.com/avatar/{currentMember.id}?s=200&d=robohash&r=x" alt="" />
+				<img :src="'https://gravatar.com/avatar/' + currentMember.id + '?s=200&d=robohash&r=x'" alt="" />
 			</div>
 			<h2>{{ currentMember.fullname }}</h2>
 			<span>{{ currentMember.email }}</span>
