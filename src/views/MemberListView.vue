@@ -16,14 +16,13 @@
 <script setup>
 	import MemberItem from "../components/MemberItem.vue";
 	import { useMembersStore } from "@/stores/members";
-	const members = useMembersStore();
 
+	const members = useMembersStore();
 	onMounted(async () => {
 		api
 			.get("members")
 			.then((x) => {
 				members.members = x;
-				console.log(members);
 			})
 			.catch((e) => console.log(e));
 	});
