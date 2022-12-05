@@ -29,7 +29,7 @@
 	<div class="register-view">
 		<h1>Register</h1>
 
-		<form id="register" onsubmit="return false">
+		<form id="register" onsubmit="return false" @submit="user.setConnected(log)">
 			<input v-model="data.fullname" type="text" name="fullname" id="fullname" placeholder="Full Name" required />
 			<input v-model="data.email" type="email" name="email" id="email" placeholder="Email Address" required />
 			<input :class="data.password != passwordConfirmation ? 'wrong-password' : ''" v-model="data.password" type="password" name="password" id="password" placeholder="Password" required />
