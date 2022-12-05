@@ -56,7 +56,7 @@ const router = createRouter({
     },
     {
       path: '/conversations',
-      name: 'conversation',
+      name: 'conversations',
       component: () => import('../views/ConversationListView.vue'),
       beforeEnter: (to, from, next) => {
         const user = useUserStore()
@@ -66,6 +66,11 @@ const router = createRouter({
         }
         next()
       },
+    },
+    {
+      path: '/conversation/:id',
+      name: 'conversation',
+      component: () => import('../views/ConversationView.vue'),
     },
     {
       path: '/about',
