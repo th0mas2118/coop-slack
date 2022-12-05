@@ -16,9 +16,11 @@ export const useUserStore = defineStore(
         })
         .then((response) => {
           isConnected.value = true
+
           member.token = response.token;
           member.fullname = response.member.fullname;
           member.email = response.member.email;
+          member.id = response.member.id;
 
           router.push('home')
         })

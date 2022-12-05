@@ -3,15 +3,29 @@
 		<header>
 			<h1>Listes des membres</h1>
 		</header>
-		<div id="members"></div>
+		<div id="members">
+			<hr />
+			<template v-for="member in members">
+				<MemberItem :member="member"></MemberItem>
+				<hr />
+			</template>
+		</div>
 	</div>
 </template>
-
 <script setup>
-	import { useUserStore } from "@/stores/user";
-	const user = useUserStore();
+	import MemberItem from "../components/MemberItem.vue";
 
-	console.log(await api.get("members"));
+	const members = ref([]);
+
+	onMounted(async () => {
+		api
+			.get("members")
+			.then((x) => {
+				members.value = x;
+				console.table(members.value);
+			})
+			.catch((e) => console.log(e));
+	});
 </script>
 
 <style lang="scss" scoped>
@@ -19,6 +33,12 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		gap: 1rem;
+		gap: 0.5rem;
+	}
+
+	hr {
+		width: 100%;
+		height: 1px;
+		background-color: #181818;
 	}
 </style>
