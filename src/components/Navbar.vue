@@ -13,6 +13,8 @@
 			<RouterLink to="/about">About</RouterLink>
 			<RouterLink v-if="!user.isConnected" to="/login">Login</RouterLink>
 			<RouterLink v-if="!user.isConnected" to="/register">Register</RouterLink>
+			<RouterLink v-if="user.isConnected" to="/members">Members</RouterLink>
+			<RouterLink v-if="user.isConnected" to="/conversations">Conversations</RouterLink>
 			<span v-if="user.isConnected" @click="user.disconnect">Logout</span>
 		</nav>
 	</header>

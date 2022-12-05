@@ -1,3 +1,4 @@
+<!-- FAIT PAR ANTHONY DRAGUN -->
 <template lang="">
 	<div>
 		<header>
@@ -5,7 +6,7 @@
 		</header>
 		<div id="members">
 			<hr />
-			<template v-for="member in members">
+			<template v-for="member in members.members">
 				<MemberItem :member="member"></MemberItem>
 				<hr />
 			</template>
@@ -14,15 +15,15 @@
 </template>
 <script setup>
 	import MemberItem from "../components/MemberItem.vue";
-
-	const members = ref([]);
+	import { useMembersStore } from "@/stores/members";
+	const members = useMembersStore();
 
 	onMounted(async () => {
 		api
 			.get("members")
 			.then((x) => {
-				members.value = x;
-				console.table(members.value);
+				members.members = x;
+				console.log(members);
 			})
 			.catch((e) => console.log(e));
 	});

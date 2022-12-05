@@ -38,7 +38,7 @@ const router = createRouter({
     },
     {
       path: '/members',
-      name: 'member',
+      name: 'members',
       component: () => import('../views/MemberListView.vue'),
       beforeEnter: (to, from, next) => {
         const user = useUserStore()
@@ -48,6 +48,11 @@ const router = createRouter({
         }
         next()
       },
+    },
+    {
+      path: '/members/:id',
+      name: 'member',
+      component: () => import('../views/MemberView.vue'),
     },
     {
       path: '/conversations',
