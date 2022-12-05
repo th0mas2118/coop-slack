@@ -40,11 +40,27 @@ const router = createRouter({
       path: '/members',
       name: 'member',
       component: () => import('../views/MemberListView.vue'),
+      beforeEnter: (to, from, next) => {
+        const user = useUserStore()
+
+        if (!user.isConnected) {
+          next('login')
+        }
+        next()
+      },
     },
     {
       path: '/conversations',
       name: 'conversation',
       component: () => import('../views/ConversationListView.vue'),
+      beforeEnter: (to, from, next) => {
+        const user = useUserStore()
+
+        if (!user.isConnected) {
+          next('login')
+        }
+        next()
+      },
     },
     {
       path: '/about',
