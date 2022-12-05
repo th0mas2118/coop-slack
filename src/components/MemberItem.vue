@@ -2,7 +2,7 @@
 <template lang="">
 	<div class="member">
 		<div class="member-data">
-			<RouterLink :to="{ name: 'member', params: { id: member.id } }" test="{ test: 'salut' }">
+			<RouterLink :to="{ name: 'member', params: { id: member.id } }">
 				<h2>{{ member.fullname }}</h2>
 			</RouterLink>
 			<span>{{ member.email }}</span>
