@@ -29,12 +29,12 @@
 	<div class="register-view">
 		<h1>Register</h1>
 
-		<form id="register" onsubmit="return false" @submit="user.setConnected(log)">
+		<form id="register" onsubmit="return false" @submit="Register">
 			<input v-model="data.fullname" type="text" name="fullname" id="fullname" placeholder="Full Name" required />
 			<input v-model="data.email" type="email" name="email" id="email" placeholder="Email Address" required />
 			<input :class="data.password != passwordConfirmation ? 'wrong-password' : ''" v-model="data.password" type="password" name="password" id="password" placeholder="Password" required />
 			<input :class="data.password != passwordConfirmation ? 'wrong-password' : ''" v-model="passwordConfirmation" type="password" name="password2" id="password2" placeholder="Password confirmation" required />
-			<button @click="Register">Créer un compte</button>
+			<button>Créer un compte</button>
 		</form>
 	</div>
 </template>
