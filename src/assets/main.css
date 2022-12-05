@@ -6,6 +6,9 @@ form {
 	justify-content: center;
 	align-items: center;
 	gap: 0.5rem;
+	width: 100%;
+	max-width: 500px;
+	margin: auto;
 }
 
 input {
@@ -14,6 +17,8 @@ input {
 	background-color: #181818;
 	color: white;
 	box-shadow: 0 0 5px 1px #18181850;
+	width: 100%;
+	max-width: 250px;
 }
 
 button {
@@ -22,6 +27,8 @@ button {
 	color: white;
 	cursor: pointer;
 	transition: 0.3s all;
+	width: 100%;
+	max-width: 250px;
 }
 
 button:hover {
