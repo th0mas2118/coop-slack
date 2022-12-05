@@ -7,7 +7,7 @@ export const useUserStore = defineStore(
   'user',
   () => {
     const isConnected = ref(false)
-    let member = reactive()
+    const member = reactive({});
 
     function setConnected(log) {
       api
@@ -16,11 +16,10 @@ export const useUserStore = defineStore(
         })
         .then((response) => {
           isConnected.value = true
-          member = {
-            token: response.token,
-            fullname: response.member.fullname,
-            email: response.member.email,
-          }
+          member.token = response.token;
+          member.fullname = response.member.fullname;
+          member.email = response.member.email;
+
           router.push('home')
         })
     }
@@ -33,7 +32,9 @@ export const useUserStore = defineStore(
         })
         .then((response) => {
           isConnected.value = false
-          member = null
+          member.token = null;
+          member.fullname = null;
+          member.email = null;
         })
         .catch((e) => {
           console.log(e)
