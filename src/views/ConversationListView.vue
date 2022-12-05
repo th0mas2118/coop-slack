@@ -3,6 +3,8 @@
 import { useUserStore } from '@/stores/user'
 const user = useUserStore()
 const conversations = []
+await api.get(`channels?token=${user.member.token}`)
+console.log(conversations)
 </script>
 
 <template>
