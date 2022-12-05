@@ -3,7 +3,7 @@
 	<div id="member">
 		<div class="member-data">
 			<div class="profile-picture">
-				<img src="" alt="" />
+				<img src="https://gravatar.com/avatar/{currentMember.id}?s=200&d=robohash&r=x" alt="" />
 			</div>
 			<h2>{{ currentMember.fullname }}</h2>
 			<span>{{ currentMember.email }}</span>
@@ -25,7 +25,7 @@
 	let currentMember = ref({});
 	const messages = ref([]);
 	currentMember = members.members.find((x) => x.id === id);
-
+	console.log(currentMember);
 	onMounted(async () => {
 		let conversations = await api.get(`channels?token=${user.member.token}`);
 
@@ -56,6 +56,13 @@
 				height: 150px;
 				background-color: white;
 				border-radius: 50%;
+				overflow: hidden;
+
+				img {
+					object-fit: cover;
+					width: 100%;
+					height: 100%;
+				}
 			}
 		}
 
