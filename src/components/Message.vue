@@ -24,80 +24,80 @@
 	</div>
 </template>
 <script setup>
-	import ModifyMessage from "@/components/ModifyMessage.vue";
-	import { useUserStore } from "@/stores/user";
-	import router from "../router/index.js";
-	import { useMembersStore } from "@/stores/members";
-	const user = useUserStore();
-	const members = useMembersStore();
-	const props = defineProps({
-		message: {},
-	});
-	const showModifyForm = ref(false);
+import ModifyMessage from "@/components/ModifyMessage.vue";
+import { useUserStore } from "@/stores/user";
+import router from "../router/index.js";
+import { useMembersStore } from "@/stores/members";
+const user = useUserStore();
+const members = useMembersStore();
+const props = defineProps({
+	message: {},
+});
+const showModifyForm = ref(false);
 
-	let msg = [];
-	members.members.forEach((element) => {
-		if (element.id === props.message.member_id) {
-			msg["member_name"] = element.fullname;
-			msg["member_id"] = element.id;
-			msg["date"] = props.message.created_at;
-		}
+let msg = [];
+members.members.forEach((element) => {
+	if (element.id === props.message.member_id) {
+		msg["member_name"] = element.fullname;
+		msg["member_id"] = element.id;
+		msg["date"] = props.message.created_at;
+	}
+});
+function setShow(e) {
+	showModifyForm.value = e;
+	// console.log(props.message.id)
+	// console.log(props.message)
+}
+function deleteMessage() {
+	api.delete(`channels/${props.message.channel_id}/posts/${props.message.id}?token=${user.member.token}`).then((respons) => {
+		router.go();
 	});
-	function setShow(e) {
-		showModifyForm.value = e;
-		// console.log(props.message.id)
-		// console.log(props.message)
-	}
-	function deleteMessage() {
-		api.delete(`channels/${props.message.channel_id}/posts/${props.message.id}?token=${user.member.token}`).then((respons) => {
-			router.go();
-		});
-	}
+}
 </script>
 <style lang="scss" scoped>
-	.hidden {
-		display: none;
-	}
+.hidden {
+	display: none;
+}
 
-	.message {
-		section {
-			display: flex;
-			flex-direction: row;
-
-			.header {
-				display: flex;
-				flex-direction: column;
-			}
-		}
-
-		&:hover {
-			.action {
-				opacity: 1;
-			}
-		}
-
+.message {
+	section {
 		display: flex;
 		flex-direction: row;
-		justify-content: space-between;
+
+		.header {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+
+	&:hover {
+		.action {
+			opacity: 1;
+		}
+	}
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+
+	.action {
+		display: flex;
+		flex-direction: row;
+		opacity: 0;
 
 		.action {
-			display: flex;
-			flex-direction: row;
-			opacity: 0;
-
-			.action {
-				transition: opacity 0.5s ease;
-			}
+			transition: opacity 0.5s ease;
 		}
 	}
+}
 
-	img {
-		width: 50px;
-		height: 50px;
-	}
+img {
+	width: 50px;
+	height: 50px;
+}
 
-	header {
-		display: flex;
-		flex-direction: row;
-	}
+header {
+	display: flex;
+	flex-direction: row;
+}
 </style>

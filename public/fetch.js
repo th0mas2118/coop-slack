@@ -13,7 +13,9 @@ const api = (() => {
       headers,
     })
 
-    return fetch(request).then((reponse) => reponse.json())
+    return fetch(request).then((reponse) => {
+      return reponse.json()
+    })
   }
   return {
     get(route, params) {
