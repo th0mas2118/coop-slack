@@ -9,11 +9,9 @@ const conversations = useConversationStore();
 
 
 onMounted(() => {
-    console.log(api.get(`channels?token=${user.member.token}`).then(response => {
-        console.log(response)
+    api.get(`channels?token=${user.member.token}`).then(response => {
         conversations.conversations = response
-    }))
-
+    })
 })
 </script>
 
@@ -31,9 +29,9 @@ onMounted(() => {
 </template>
 
 <style lang="scss" scoped>
-#create {
-    display: none;
-}
+// #create {
+//     display: none;
+// }
 
 #conversation {
     display: flex;

@@ -35,7 +35,6 @@ function createMessage() {
             message: message.value,
         }
     }).then(response => {
-        console.log(response)
         router.go()
     })
 }

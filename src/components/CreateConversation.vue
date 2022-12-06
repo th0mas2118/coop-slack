@@ -11,6 +11,7 @@
 </template>
 
 <script setup>
+import router from '@/router'
 import { useUserStore } from "@/stores/user";
 const user = useUserStore();
 
@@ -29,6 +30,10 @@ function create() {
         }
     }).then(response => {
         console.log(response)
+        router.push(`/conversation/${response.id}`)
     })
+}
+function abort() {
+    //caché formulaire
 }
 </script>
