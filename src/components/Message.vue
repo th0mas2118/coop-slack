@@ -24,10 +24,9 @@ const props = defineProps({
 let msg = []
 members.members.forEach(element => {
     if (element.id === props.message.member_id) {
-        console.log(element)
         msg['member_name'] = element.fullname
         msg['member_id'] = element.id
-        msg['date'] = element.created_at
+        msg['date'] = props.message.created_at
     }
 });
 </script>
