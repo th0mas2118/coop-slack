@@ -80,4 +80,23 @@ const router = createRouter({
   ],
 })
 
+router.beforeResolve(async (to, from, next) => {
+  const user = useUserStore();
+  let valid = true;
+
+  if (user?.member?.token) {
+    api.get(`members/${user.member.id}/signedin?token=${user.member.token}`).then(r => {
+      if (r.message) {
+        user.disconnect();
+        valid = false;
+      }
+    }).catch(e => {
+      user.disconnect();
+      valid = false;
+    });
+  }
+
+  valid ? next() : next('login');
+})
+
 export default router
