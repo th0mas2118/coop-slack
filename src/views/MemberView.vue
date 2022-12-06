@@ -7,9 +7,14 @@
 			</div>
 			<h2>{{ currentMember.fullname }}</h2>
 			<span>{{ currentMember.email }}</span>
-			<span>Inscrit depuis: {{ currentMember.created_at }}</span>
+			<span>Register date: {{ currentMember.created_at }}</span>
 		</div>
-		<h3>Liste des messages</h3>
+		<h3>Messages List</h3>
+		<div id="messages">
+			<template v-for="message in messages">
+				<Message :message="message"></Message>
+			</template>
+		</div>
 	</div>
 </template>
 
@@ -17,21 +22,31 @@
 	import router from "@/router";
 	import { useMembersStore } from "@/stores/members";
 	import { useUserStore } from "@/stores/user";
+	import Message from "@/components/Message.vue";
 
 	const user = useUserStore();
 	const members = useMembersStore();
-
 	const id = router.currentRoute.value.params.id;
-	let currentMember = ref({});
 	const messages = ref([]);
+	const loading = ref(true);
+
+	let currentMember = ref({});
+
 	currentMember = members.members.find((x) => x.id === id);
-	console.log(currentMember);
+
 	onMounted(async () => {
 		let conversations = await api.get(`channels?token=${user.member.token}`);
+		let tempMessages = [];
+		let requests = [];
 
 		conversations.forEach(async (x) => {
-			console.log(await api.get(`channels/${x.id}/posts?token=${user.member.token}`));
+			requests.push(api.get(`channels/${x.id}/posts?token=${user.member.token}`));
 		});
+
+		await Promise.all(requests).then((res) => res.forEach((x) => (tempMessages = tempMessages.concat(x))));
+
+		messages.value = tempMessages.filter((x) => x.member_id === id);
+		loading.value = false;
 	});
 </script>
 
@@ -68,6 +83,12 @@
 
 		h3 {
 			margin: 2rem;
+		}
+
+		#messages {
+			display: flex;
+			gap: 1rem;
+			flex-direction: column;
 		}
 	}
 </style>
