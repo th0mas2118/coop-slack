@@ -14,6 +14,7 @@ import router from '@/router'
 import { useMembersStore } from "@/stores/members";
 import { useConversationStore } from '@/stores/conversations'
 import { useUserStore } from "@/stores/user";
+
 let message = ref('')
 const user = useUserStore();
 const members = useMembersStore()
@@ -24,7 +25,6 @@ let messages = ref([])
 onMounted(async () => {
     api.get(`channels/${id}/posts?token=${user.member.token}`).then(response => {
         messages.value = response
-        console.log(messages)
     })
 })
 
@@ -34,7 +34,10 @@ function createMessage() {
             member_id: user.member.id,
             message: message.value,
         }
-    }).then(response => console.log(response))
+    }).then(response => {
+        console.log(response)
+        router.go()
+    })
 }
 </script>
 
