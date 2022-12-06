@@ -45,7 +45,6 @@
 		});
 
 		await Promise.all(requests).then((res) => res.forEach((x) => (tempMessages = tempMessages.concat(x))));
-
 		messages.value = tempMessages.filter((x) => x.member_id === id);
 		loading.value = false;
 	});

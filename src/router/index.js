@@ -87,10 +87,12 @@ router.beforeResolve(async (to, from, next) => {
   if (user?.member?.token) {
     api.get(`members/${user.member.id}/signedin?token=${user.member.token}`).then(r => {
       if (r.message) {
+        console.log("b");
         user.disconnect();
         valid = false;
       }
     }).catch(e => {
+      console.log("a");
       user.disconnect();
       valid = false;
     });
