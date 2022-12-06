@@ -1,6 +1,6 @@
 <!-- FAIT PAR PIERSON THOMAS -->
 <template lang="">
-    <button @click="deleteConversation">Delete Conversation</button>
+    <button id="delete" @click="deleteConversation">Delete Conversation</button>
     <template v-for="message in messages">
         <Message :message="message"></Message>
     </template>
@@ -45,6 +45,8 @@ function deleteConversation() {
 }
 </script>
 
-<style lang="" scoped>
-    
+<style lang="scss" scoped>
+#delete {
+    margin: 1rem;
+}
 </style>
