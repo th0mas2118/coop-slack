@@ -25,7 +25,7 @@ function modifyMessage() {
             message: message.content
         }
     }).then(response => {
-        console.log(response)
+        //console.log(response)
     })
 }
 </script>

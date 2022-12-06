@@ -37,7 +37,7 @@ export const useUserStore = defineStore(
           member.token = null
           member.fullname = null
           member.email = null
-          router.go('login');
+          router.go('login')
         })
         .catch((e) => {
           console.log(e)
