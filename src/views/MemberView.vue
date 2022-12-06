@@ -12,7 +12,7 @@
 		<h3>Messages List</h3>
 		<div id="messages">
 			<template v-for="message in messages">
-				<Message :message="message"></Message>
+				<RouterLink :to="{ name: 'conversation', params: { id: message.channel_id } }"><Message :message="message"></Message></RouterLink>
 			</template>
 		</div>
 	</div>
