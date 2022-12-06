@@ -23,6 +23,8 @@
 		<ModifyMessage :message="message" v-if="showModifyForm && user.member.id === msg['member_id']" @show="setShow"></ModifyMessage>
 	</div>
 </template>
+
+
 <script setup>
 import ModifyMessage from "@/components/ModifyMessage.vue";
 import { useUserStore } from "@/stores/user";
@@ -33,8 +35,9 @@ const members = useMembersStore();
 const props = defineProps({
 	message: {},
 });
+//Const for print or not the modifyForm
 const showModifyForm = ref(false);
-
+//variale to bring together things about the message
 let msg = [];
 members.members.forEach((element) => {
 	if (element.id === props.message.member_id) {
@@ -43,11 +46,13 @@ members.members.forEach((element) => {
 		msg["date"] = props.message.created_at;
 	}
 });
+
+//function to hide/show modifyForm
 function setShow(e) {
 	showModifyForm.value = e;
-	// console.log(props.message.id)
-	// console.log(props.message)
 }
+
+
 function deleteMessage() {
 	api.delete(`channels/${props.message.channel_id}/posts/${props.message.id}?token=${user.member.token}`).then((respons) => {
 		router.go();
