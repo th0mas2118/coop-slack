@@ -9,6 +9,9 @@
             </form>
     </div>
 </template>
+
+
+
 <script setup>
 import { useUserStore } from "@/stores/user";
 import router from "../router/index.js";
@@ -16,7 +19,10 @@ const user = useUserStore();
 const props = defineProps({
     conversation: {},
 });
+
+//const use to manage formular print
 const emit = defineEmits(["show"]);
+
 function modifyConversation() {
     api.put(`channels/${props.conversation.id}?token=${user.member.token}`, {
         body: {

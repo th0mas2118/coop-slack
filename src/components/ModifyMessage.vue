@@ -10,17 +10,24 @@
 	</div>
 </template>
 
+
 <script setup>
 import router from "@/router";
 import { useUserStore } from "@/stores/user";
 const user = useUserStore();
+
+//const use to manage formular print
 const emit = defineEmits(["show"]);
+
+//propriety revocer from the messsage
 let message = reactive({
     content: props.message.message,
 });
 const props = defineProps({
     message: {},
 });
+
+
 function modifyMessage() {
     console.log(props.message);
     api
