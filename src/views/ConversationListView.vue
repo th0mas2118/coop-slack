@@ -1,25 +1,4 @@
 <!-- FAIT PAR PIERSON THOMAS -->
-<script setup>
-import CreateConversation from "@/components/CreateConversation.vue";
-import { useUserStore } from "@/stores/user";
-import { useConversationStore } from "@/stores/conversations";
-import { onMounted } from "vue";
-const user = useUserStore();
-const conversations = useConversationStore();
-
-const showCreateForm = ref(false);
-
-function setShow(e) {
-	showCreateForm.value = e;
-}
-
-onMounted(() => {
-	api.get(`channels?token=${user.member.token}`).then((response) => {
-		conversations.conversations = response;
-	});
-});
-</script>
-
 <template>
 	<CreateConversation v-if="showCreateForm" @show="setShow"></CreateConversation>
 	<header>
@@ -36,6 +15,34 @@ onMounted(() => {
 		<hr />
 	</div>
 </template>
+
+
+
+<script setup>
+import CreateConversation from "@/components/CreateConversation.vue";
+import { useUserStore } from "@/stores/user";
+import { useConversationStore } from "@/stores/conversations";
+import { onMounted } from "vue";
+
+//const from pinia store
+const user = useUserStore();
+const conversations = useConversationStore();
+
+//const for hide/show convertion's creation formular
+const showCreateForm = ref(false);
+function setShow(e) {
+	showCreateForm.value = e;
+}
+
+//call to API to have lists of conversations
+onMounted(() => {
+	api.get(`channels?token=${user.member.token}`).then((response) => {
+		conversations.conversations = response;
+	});
+});
+</script>
+
+
 
 <style lang="scss" scoped>
 // #create {

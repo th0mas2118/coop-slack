@@ -15,13 +15,22 @@
         <button>Create message</button>
     </form>
 </template>
+
+
+
+
 <script setup>
 import ModifyConversation from '@/components/ModifyConversation.vue'
 import Message from '@/components/Message.vue'
 import router from '@/router'
+
+//import from pinia stor
 import { useMembersStore } from "@/stores/members";
 import { useConversationStore } from '@/stores/conversations'
 import { useUserStore } from "@/stores/user";
+const user = useUserStore();
+const members = useMembersStore()
+const conversations = useConversationStore()
 
 const showModifyConversation = ref(false)
 function setShowConv(e) {
@@ -36,13 +45,14 @@ function setShow(e) {
 }
 
 let message = ref('')
-const user = useUserStore();
-const members = useMembersStore()
-const conversations = useConversationStore()
+//id of the actual channel
 const id = router.currentRoute.value.params.id;
+
 const conversation = conversations.conversations.find((x) => {
     return x.id === id
 })
+
+//messages from api
 let messages = ref([])
 onMounted(async () => {
     api.get(`channels/${id}/posts?token=${user.member.token}`).then(response => {
