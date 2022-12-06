@@ -14,21 +14,26 @@
                 <div class="content">{{message.message}}</div>
             </div>
         </section>
-        <div class="action">
-            <button @click="modifyMessage">Modify</button>
+        <div class="action" v-if="user.member.id===msg['member_id']">
+            <button @click="setShow(true)">Modify</button>
             <button @click="deleteMessage">Delete</button>
         </div>
+        <ModifyMessage :message="message" v-if="showModifyForm && user.member.id===msg['member_id']" @show="setShow"></ModifyMessage>
     </div>
 </template>
 <script setup>
+import ModifyMessage from "@/components/ModifyMessage.vue"
 import { useUserStore } from "@/stores/user";
 import router from "../router/index.js";
-const user = useUserStore();
 import { useMembersStore } from "@/stores/members";
+const user = useUserStore();
 const members = useMembersStore();
 const props = defineProps({
     message: {},
 });
+const showModifyForm = ref(false);
+
+
 let msg = []
 members.members.forEach(element => {
     if (element.id === props.message.member_id) {
@@ -37,15 +42,22 @@ members.members.forEach(element => {
         msg['date'] = props.message.created_at
     }
 });
-function modifyMessage() {
-    console.log(props.message.id)
+function setShow(e) {
+    showModifyForm.value = e;
+    // console.log(props.message.id)
+    // console.log(props.message)
 }
 function deleteMessage() {
     api.delete(`channels/${props.message.channel_id}/posts/${props.message.id}?token=${user.member.token}`).then(respons => { router.go() })
 }
 </script>
 <style lang="scss" scoped>
+.hidden {
+    display: none;
+}
+
 .message {
+
     section {
         display: flex;
         flex-direction: row;

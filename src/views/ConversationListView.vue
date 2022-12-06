@@ -1,23 +1,23 @@
 <!-- FAIT PAR PIERSON THOMAS -->
 <script setup>
-	import CreateConversation from "@/components/CreateConversation.vue";
-	import { useUserStore } from "@/stores/user";
-	import { useConversationStore } from "@/stores/conversations";
-	import { onMounted } from "vue";
-	const user = useUserStore();
-	const conversations = useConversationStore();
+import CreateConversation from "@/components/CreateConversation.vue";
+import { useUserStore } from "@/stores/user";
+import { useConversationStore } from "@/stores/conversations";
+import { onMounted } from "vue";
+const user = useUserStore();
+const conversations = useConversationStore();
 
-	const showCreateForm = ref(false);
+const showCreateForm = ref(false);
 
-	function setShow(e) {
-		showCreateForm.value = e;
-	}
+function setShow(e) {
+	showCreateForm.value = e;
+}
 
-	onMounted(() => {
-		api.get(`channels?token=${user.member.token}`).then((response) => {
-			conversations.conversations = response;
-		});
+onMounted(() => {
+	api.get(`channels?token=${user.member.token}`).then((response) => {
+		conversations.conversations = response;
 	});
+});
 </script>
 
 <template>
@@ -38,31 +38,31 @@
 </template>
 
 <style lang="scss" scoped>
-	// #create {
-	//     display: none;
-	// }
+// #create {
+//     display: none;
+// }
 
-	header {
-		button {
-			margin-bottom: 1rem;
-		}
+header {
+	button {
+		margin-bottom: 1rem;
 	}
+}
 
-	#conversation {
+#conversation {
+	display: flex;
+	flex-direction: column;
+
+	.conversation-data {
 		display: flex;
-		flex-direction: column;
-
-		.conversation-data {
-			display: flex;
-			flex-direction: row;
-			justify-content: space-between;
-			gap: 0.5rem;
-		}
+		flex-direction: row;
+		justify-content: space-between;
+		gap: 0.5rem;
 	}
+}
 
-	hr {
-		width: 100%;
-		height: 2px;
-		background-color: yellow;
-	}
+hr {
+	width: 100%;
+	height: 2px;
+	background-color: yellow;
+}
 </style>
