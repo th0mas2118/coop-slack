@@ -1,5 +1,6 @@
 
 <template lang="">
+    <button @click="deleteConversation">Delete Conversation</button>
     <template v-for="message in messages">
         <Message :message="message"></Message>
     </template>
@@ -37,6 +38,10 @@ function createMessage() {
     }).then(response => {
         router.go()
     })
+}
+function deleteConversation() {
+    api.delete(`channels/${id}?token=${user.member.token}`)
+    router.push('/conversations')
 }
 </script>
 
