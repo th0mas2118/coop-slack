@@ -22,7 +22,7 @@ export const useUserStore = defineStore(
           member.email = response.member.email
           member.id = response.member.id
 
-          router.push('home')
+          router.push('/conversations')
         })
     }
     function disconnect() {
