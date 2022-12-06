@@ -2,7 +2,7 @@
 <template lang="">
 	<div>
 		<header>
-			<h1>Listes des membres</h1>
+			<h1>Members</h1>
 		</header>
 		<div id="members">
 			<hr />
