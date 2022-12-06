@@ -1,3 +1,4 @@
+<!-- FAIT PAR PIERSON THOMAS -->
 <template lang="">
     <div class="message">
         <div class="avatar">

@@ -1,4 +1,4 @@
-
+<!-- FAIT PAR PIERSON THOMAS -->
 <template lang="">
     <button @click="deleteConversation">Delete Conversation</button>
     <template v-for="message in messages">
