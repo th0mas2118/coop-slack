@@ -1,3 +1,4 @@
+<!-- FAIT PAR PIERSON THOMAS -->
 <template lang="">
     <div>
         <form onsubmit="return false" @submit="modifyConversation">

@@ -1,3 +1,4 @@
+<!-- FAIT PAR ANTHONY DRAGUN -->
 <template lang="">
 	<div id="create-panel">
 		<form onsubmit="return false" @submit="create">

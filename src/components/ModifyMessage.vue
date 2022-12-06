@@ -1,3 +1,4 @@
+<!-- FAIT PAR PIERSON THOMAS -->
 <template lang="">
 	<div id="modify-panel">
 		<form onsubmit="return false" @submit="modifyMessage">
