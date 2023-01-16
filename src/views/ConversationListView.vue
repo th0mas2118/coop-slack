@@ -2,7 +2,7 @@
 <template>
 	<CreateConversation v-if="showCreateForm" @show="setShow"></CreateConversation>
 	<header>
-		<h1>Listes des membres</h1>
+		<h1>Listes des conversations</h1>
 		<button @click="setShow(true)">New Conversation</button>
 	</header>
 	<div id="conversation" v-for="conversation in conversations.conversations">
