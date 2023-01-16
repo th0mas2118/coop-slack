@@ -16,60 +16,56 @@
 	</div>
 </template>
 
-
-
 <script setup>
-import CreateConversation from "@/components/CreateConversation.vue";
-import { useUserStore } from "@/stores/user";
-import { useConversationStore } from "@/stores/conversations";
-import { onMounted } from "vue";
+	import CreateConversation from "@/components/CreateConversation.vue";
+	import { useUserStore } from "@/stores/user";
+	import { useConversationStore } from "@/stores/conversations";
+	import { onMounted } from "vue";
 
-//const from pinia store
-const user = useUserStore();
-const conversations = useConversationStore();
+	//const from pinia store
+	const user = useUserStore();
+	const conversations = useConversationStore();
 
-//const for hide/show convertion's creation formular
-const showCreateForm = ref(false);
-function setShow(e) {
-	showCreateForm.value = e;
-}
+	//const for hide/show convertion's creation formular
+	const showCreateForm = ref(false);
+	function setShow(e) {
+		showCreateForm.value = e;
+	}
 
-//call to API to have lists of conversations
-onMounted(() => {
-	api.get(`channels?token=${user.member.token}`).then((response) => {
-		conversations.conversations = response;
+	//call to API to have lists of conversations
+	onMounted(() => {
+		api.get(`channels?token=${user.member.token}`).then((response) => {
+			conversations.conversations = response;
+		});
 	});
-});
 </script>
 
-
-
 <style lang="scss" scoped>
-// #create {
-//     display: none;
-// }
+	// #create {
+	//     display: none;
+	// }
 
-header {
-	button {
-		margin-bottom: 1rem;
+	header {
+		button {
+			margin-bottom: 1rem;
+		}
 	}
-}
 
-#conversation {
-	display: flex;
-	flex-direction: column;
-
-	.conversation-data {
+	#conversation {
 		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
-		gap: 0.5rem;
-	}
-}
+		flex-direction: column;
 
-hr {
-	width: 100%;
-	height: 2px;
-	background-color: yellow;
-}
+		.conversation-data {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			gap: 0.5rem;
+		}
+	}
+
+	hr {
+		width: 100%;
+		height: 2px;
+		background-color: yellow;
+	}
 </style>

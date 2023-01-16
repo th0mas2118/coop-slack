@@ -2,8 +2,6 @@
 
 <template>
 	<main>
-		<TheWelcome />
-		<a href="/register">Register</a>
-		<a href="/login">Login</a>
+		<h1>Home Page</h1>
 	</main>
 </template>
